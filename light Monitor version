@@ -1,0 +1,44 @@
+@page "/userlight"
+
+<h2>💡 Light Monitor</h2>
+<br />
+
+<!-- Control Buttons Section -->
+<div style="display: flex; gap: 20px; justify-content: center; margin-bottom: 30px;">
+    <MudButton Variant="Variant.Filled" Color="Color.Success" OnClick="TurnOn" Style="width:120px; font-size:18px;">
+        ON
+    </MudButton>
+
+    <MudButton Variant="Variant.Filled" Color="Color.Error" OnClick="TurnOff" Style="width:120px; font-size:18px;">
+        OFF
+    </MudButton>
+</div>
+
+<!-- Light Display Section -->
+<div style="display: flex; gap: 40px; align-items: center; justify-content: center;">
+    <!-- Light ON -->
+    <div style="text-align:center;">
+        <div style="width:120px; height:120px; border-radius:50%; background-color:@(isLightOn ? "yellow" : "gray"); box-shadow:@(isLightOn ? "0 0 30px yellow" : "none"); transition: all 0.3s ease;"></div>
+        <p><b>Light ON</b></p>
+    </div>
+
+    <!-- Light OFF -->
+    <div style="text-align:center;">
+        <div style="width:120px; height:120px; border-radius:50%; background-color:@(!isLightOn ? "red" : "gray"); box-shadow:@(!isLightOn ? "0 0 30px red" : "none"); transition: all 0.3s ease;"></div>
+        <p><b>Light OFF</b></p>
+    </div>
+</div>
+
+@code {
+    bool isLightOn = false;
+
+    void TurnOn()
+    {
+        isLightOn = true;
+    }
+
+    void TurnOff()
+    {
+        isLightOn = false;
+    }
+}
