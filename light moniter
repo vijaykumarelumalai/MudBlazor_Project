@@ -1,0 +1,56 @@
+@page "/userlight"
+
+<h2>💡 Light Monitor</h2>
+<br>
+
+<!-- User Input Section -->
+<div style="display: flex; flex-direction: column; align-items: flex-start; gap: 10px;">
+    <label><h3>Enter condition:</h3></label>
+
+    <!-- Enlarged textbox -->
+    <input 
+        @bind="userInput" 
+        placeholder="Type true or false"
+        style="width: 300px; height: 40px; font-size: 18px; padding: 5px 10px; border-radius: 8px; border: 1px solid #ccc;" 
+    />
+
+    <!-- Button below the textbox -->
+    <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="CheckCondition" Style="width:150px; font-size:16px;">
+        Apply
+    </MudButton>
+</div>
+
+<br />
+
+<!-- Light Display Section -->
+<div style="display: flex; gap: 40px; align-items: center; justify-content: center; margin-top: 20px;">
+    <!-- Light ON -->
+    <div style="text-align:center;">
+        <div style="width:100px; height:100px; border-radius:50%; background-color:@(isLightOn ? "yellow" : "gray"); box-shadow:@(isLightOn ? "0 0 25px yellow" : "none");"></div>
+        <p><b>Light ON</b></p>
+    </div>
+
+    <!-- Light OFF -->
+    <div style="text-align:center;">
+        <div style="width:100px; height:100px; border-radius:50%; background-color:@(!isLightOn ? "red" : "gray"); box-shadow:@(!isLightOn ? "0 0 25px red" : "none");"></div>
+        <p><b>Light OFF</b></p>
+    </div>
+</div>
+
+@code {
+    string userInput = "";
+    bool isLightOn = false;
+
+    void CheckCondition()
+    {
+        // Convert user input to lowercase and check
+        if (userInput.Trim().ToLower() == "on")
+        {
+            isLightOn = true;
+        }
+        else
+        {
+            isLightOn = false;
+        }
+    } i want both as a button type like true button and false button  on the screen itself also no need of      text box remove it  
+}
